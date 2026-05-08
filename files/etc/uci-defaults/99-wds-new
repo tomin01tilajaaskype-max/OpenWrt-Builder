@@ -56,6 +56,9 @@ for band in $band2g $band5g; do
     uci set wireless.@wifi-iface[$band].encryption='psk2+aes'
     uci set wireless.@wifi-iface[$band].key="$ssid_key"
     uci set wireless.@wifi-iface[$band].wpa_group_rekey='86400'
+
+    # Remove default 2.4GHz AP config
+    uci del wireless.default_radio${band2g}
 done
 
 # Band-specific settings
