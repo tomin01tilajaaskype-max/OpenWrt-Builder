@@ -1,0 +1,55 @@
+body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+#tokenInput { width: 34%; min-width: 380px; padding: 10px; margin: 10px 0; }
+#modelInput { width: 32%; min-width: 380px; padding: 10px; margin: 10px 0; }
+#versionInput { width: 5%; min-width: 150px; padding: 10px; margin: 10px 0; }
+button { padding: 10px 15px; cursor: pointer; }
+#packagesInput { width: 30%; min-width: 380px; padding: 10px; margin: 10px 0; }
+#disabled_servicesInput { width: 30%; min-width: 380px; padding: 10px; margin: 10px 0; }
+#scriptsInput { width: 10%; min-width: 200px; padding: 10px; margin: 10px 0; }
+#customScriptInput { width: 30%; min-width: 380px; width: 594px; height: 157px; padding: 10px; margin: 10px auto; }
+
+
+#clearTokenButton, #setupTokenButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+#buildInfo {
+    margin: 20px auto; /* Center the element horizontally */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: left;
+    width: 30%; /* Adjust width as needed */
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+    max-width: 100%; /* Ensure it does not exceed the parent width */
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        background-color: #212830;
+        color: #ffffff; /* Ensure text is visible */
+        color-scheme: dark; /* Apply globally */
+    }
+    header, .btn {
+        background-color: #212830;
+        color: #ffffff; /* Consistent text color */
+    }
+    input, button, select, textarea {
+        color-scheme: dark; /* Include all relevant form elements */
+    }
+}
+
+#tokenForm, #setupTokenButton {
+    display: none;
+}
+
+#configToUciButton {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
