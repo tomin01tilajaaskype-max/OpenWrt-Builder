@@ -33,6 +33,7 @@ jobs:
           CONFIG_TARGET_mediatek=y
           CONFIG_TARGET_mediatek_filogic=y
           CONFIG_TARGET_mediatek_filogic_DEVICE_alwaylink_m60k63=y
+          CONFIG_TARGET_ROOTFS_INITRAMFS=y
           CONFIG_DEVEL=y
           CONFIG_CCACHE=y
           EOF
