@@ -37,6 +37,10 @@ jobs:
           
           CONFIG_DEVEL=y
           CONFIG_CCACHE=y
+          # Modem support
+          CONFIG_PACKAGE_modemmanager=y
+          CONFIG_PACKAGE_modemmanager-rpcd=y
+          CONFIG_PACKAGE_luci-app-modemmanager=y
           # USB / MODEM
           CONFIG_PACKAGE_kmod-usb-net=y
           CONFIG_PACKAGE_kmod-usb-net-qmi-wwan=y
@@ -45,6 +49,8 @@ jobs:
           CONFIG_PACKAGE_uqmi=y
           # PHY
           CONFIG_PACKAGE_kmod-phy-realtek=y
+          # QModem
+          CONFIG_PACKAGE_luci-app-qmodem=y
           EOF
           make defconfig
       - name: Download packages
