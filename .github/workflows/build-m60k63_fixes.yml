@@ -46,11 +46,10 @@ jobs:
 
             DEVICE_COMPAT_VERSION := 1.1
             DEVICE_COMPAT_MESSAGE := Config cannot be migrated automatically
-            
+
             SUPPORTED_DEVICES += \
-             alwaylink,m60k63 \
-             feiyan,m60k63
-               
+              alwaylink,m60k63 \
+              feiyan,m60k63
 
             DEVICE_PACKAGES := \
               kmod-mt7915e \
@@ -80,7 +79,7 @@ jobs:
               ddns-scripts-services \
               luci-app-ddns \
               knot-libs \
-              knot-host \              
+              knot-host \
               luci \
               luci-ssl-openssl
 
@@ -123,11 +122,11 @@ jobs:
           CONFIG_PACKAGE_ddns-scripts-nsupdate=y
           CONFIG_PACKAGE_ddns-scripts-services=y
           CONFIG_PACKAGE_luci-app-ddns=y
-          
+
           CONFIG_PACKAGE_zerotier=y
 
           CONFIG_PACKAGE_knot-libs=y
-          CONFIG_PACKAGE_knot-host=y          
+          CONFIG_PACKAGE_knot-host=y
 
           CONFIG_PACKAGE_luci=y
           CONFIG_PACKAGE_luci-ssl-openssl=y
@@ -167,9 +166,8 @@ jobs:
               list ipaddr '127.0.0.1/8'
 
           config globals 'globals'
-              option ula_prefix 'fd00:1234::/48'
-              
-
+              option ula_prefix 'fd00:1234::/48'   
+             
           config interface 'lan'
               option device 'br-lan'
               option proto 'static'
@@ -185,8 +183,7 @@ jobs:
               option proto 'dhcpv6'
 
           config interface 'wwan0'
-              option proto 'dhcp'
-              
+              option proto 'dhcp'            
               option metric '5'
               option defaultroute '1'
 
