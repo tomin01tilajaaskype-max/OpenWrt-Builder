@@ -44,28 +44,47 @@ jobs:
             DEVICE_DTS := mt7986a-alwaylink-m60k63
             DEVICE_DTS_DIR := ../dts
 
+            DEVICE_COMPAT_VERSION := 1.1
+            DEVICE_COMPAT_MESSAGE := Config cannot be migrated automatically
+            
+            SUPPORTED_DEVICES += \
+             alwaylink,m60k63 \
+             feiyan,m60k63
+               
+
             DEVICE_PACKAGES := \
               kmod-mt7915e \
               wpad-openssl \
               kmod-usb3 \
+              kmod-usb-xhci-mtk \
+              kmod-usb-net \
+              kmod-usb-net-qmi-wwan \
+              kmod-usb-net-cdc-mbim \
+              kmod-usb-serial \
+              kmod-usb-serial-option \
+              kmod-usb-serial-wwan \
+              kmod-usb-wdm \
+              kmod-usb-serial-qualcomm \
               uqmi \
               modemmanager \
               modemmanager-rpcd \
               libqmi \
               libmbim \
               wwan \
-              kmod-usb-net \
-              kmod-usb-net-qmi-wwan \
-              kmod-usb-net-cdc-mbim \
-              kmod-usb-serial \
-              kmod-usb-serial-option \
-              kmod-usb-wdm \
               kmod-phy-realtek \
+              zerotier \
+              ddns-scripts \
+              ddns-scripts-cloudflare \
+              ddns-scripts-noip \
+              ddns-scripts-nsupdate \
+              ddns-scripts-services \
+              luci-app-ddns \
+              knot-libs \
+              knot-host \              
               luci \
               luci-ssl-openssl
 
             IMAGE_SIZE := 65536k
-
             KERNEL_IN_UBI := 1
             UBINIZE_OPTS := -E 5
             BLOCKSIZE := 128k
@@ -98,6 +117,18 @@ jobs:
           CONFIG_DEVEL=y
           CONFIG_CCACHE=y
 
+          CONFIG_PACKAGE_ddns-scripts=y
+          CONFIG_PACKAGE_ddns-scripts-cloudflare=y
+          CONFIG_PACKAGE_ddns-scripts-noip=y
+          CONFIG_PACKAGE_ddns-scripts-nsupdate=y
+          CONFIG_PACKAGE_ddns-scripts-services=y
+          CONFIG_PACKAGE_luci-app-ddns=y
+          
+          CONFIG_PACKAGE_zerotier=y
+
+          CONFIG_PACKAGE_knot-libs=y
+          CONFIG_PACKAGE_knot-host=y          
+
           CONFIG_PACKAGE_luci=y
           CONFIG_PACKAGE_luci-ssl-openssl=y
 
@@ -113,8 +144,10 @@ jobs:
           CONFIG_PACKAGE_kmod-usb-net-cdc-mbim=y
           CONFIG_PACKAGE_kmod-usb-serial=y
           CONFIG_PACKAGE_kmod-usb-serial-option=y
+          CONFIG_PACKAGE_kmod-usb-serial-wwan=y
           CONFIG_PACKAGE_kmod-usb-wdm=y
-
+          CONFIG_PACKAGE_kmod-usb-xhci-mtk=y
+          CONFIG_PACKAGE_kmod-usb-serial-qualcomm=y
           CONFIG_PACKAGE_kmod-phy-realtek=y
 
           EOF
@@ -135,14 +168,7 @@ jobs:
 
           config globals 'globals'
               option ula_prefix 'fd00:1234::/48'
-
-          config device
-              option name 'br-lan'
-              option type 'bridge'
-              list ports 'lan1'
-              list ports 'lan2'
-              list ports 'lan3'
-              list ports 'lan4'
+              
 
           config interface 'lan'
               option device 'br-lan'
@@ -160,7 +186,7 @@ jobs:
 
           config interface 'wwan0'
               option proto 'dhcp'
-              option device 'wwan0_1'
+              
               option metric '5'
               option defaultroute '1'
 
